@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from "react";
 import { MdShoppingBasket } from "react-icons/md";
 import { motion } from "framer-motion";
 import NotFound from "../img/NotFound.svg";
+import { Link } from "react-router-dom";
 
-const RowContainer = ({ flag, data ,scrollValue}) => {
+const RowContainer = ({ flag, data ,scrollValue, cat}) => {
   const rowContainer = useRef();
   console.log(scrollValue);
   useEffect(() => {
@@ -21,6 +22,9 @@ const RowContainer = ({ flag, data ,scrollValue}) => {
     >
       {data && data.length > 0 ? (
         data.map((item) => (
+
+
+          <Link to={`details/${cat}/${item?.id}`}>
           <div
             key={item?.id}
             className="w-275 h-[175px] min-w-[275px] md:w-300 md:min-w-[300px]  bg-cardOverlay rounded-lg py-2 px-4  my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-evenly relative"
@@ -60,6 +64,8 @@ const RowContainer = ({ flag, data ,scrollValue}) => {
               </div>
             </div>
           </div>
+
+          </Link>
         ))
       ) : (
         <div className="w-full flex flex-col items-center justify-center">

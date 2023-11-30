@@ -57,7 +57,7 @@ const MenuContainer = () => {
 
         <div className="w-full">
         {Menu[filter] ? (
-            <RowContainer flag={false} data={Menu[filter]} />
+            <RowContainer flag={false} data={Menu[filter]} cat={filter}/>
           ) : (
             <p>No items found for the selected category.</p>
           )}

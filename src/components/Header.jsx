@@ -1,15 +1,35 @@
-import React, { useState } from "react";
-
-
-
+import React, { useEffect, useState } from "react";
 const Header = () => {
+  const [scrolling, setScrolling] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+
+      // Set scrolling state based on scroll position
+      setScrolling(scrollTop > 0);
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
 
 
 
 
   return (
     <>
-      <nav class="fixed z-10 w-full bg-white md:absolute md:bg-transparent">
+    <nav class="fixed z-10 w-full md:absolute md:bg-transparent transition duration-300" style={{position:"fixed",left:"0px",right:"0px",  backgroundColor: scrolling ? "#fff" : "transparent",}}>
         <div class="container m-auto px-2 md:px-12 lg:px-7">
           <div class="flex flex-wrap items-center justify-between py-3 gap-6 md:py-4 md:gap-0">
             <div class="w-full px-6 flex justify-between lg:w-max md:px-0">
@@ -17,14 +37,23 @@ const Header = () => {
                 <img src="https://tailus.io/sources/blocks/food-delivery/preview/images/icon.png" class="w-12" alt="tailus logo" width="144" height="133" />
                 <span class="text-2xl font-bold text-yellow-900">Food<span class="text-yellow-700">Feed</span></span>
              
-              <button aria-label="humburger" id="hamburger" class="relative w-10 h-10 -mr-2 lg:hidden">
+             <button
+                aria-label="hamburger"
+                id="hamburger"
+                className="relative w-10 h-10 -mr-2 lg:hidden"
+                onClick={toggleMobileMenu}
+              >
                 <div aria-hidden="true" id="line" class="inset-0 w-6 h-0.5 m-auto rounded bg-yellow-900 transtion duration-300"></div>
                 <div aria-hidden="true" id="line2" class="inset-0 w-6 h-0.5 mt-2 m-auto rounded bg-yellow-900 transtion duration-300"></div>
               </button>
             </div>
 
-            <div class="hidden w-full lg:flex flex-wrap justify-end items-center space-y-6 p-6 rounded-xl bg-white md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12">
-              <div class="text-gray-600 lg:pr-4">
+            <div
+              className={`${
+                isMobileMenuOpen ? "block" : "hidden"
+              } w-full lg:flex flex-wrap justify-end items-center space-y-6 p-6 rounded-xl bg-slate-900 md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12`}
+            >
+              <div class={`lg:pr-4 ${scrolling ? "text-black" : "text-white"}`} >
                 <ul class="space-y-6 tracking-wide font-medium text-sm md:flex md:space-y-0">
                   <li>
                       {['Home','Menu','Contact'].map((item)=>
