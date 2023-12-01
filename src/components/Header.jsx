@@ -8,7 +8,7 @@ const Header = () => {
       const scrollTop = window.scrollY;
 
       // Set scrolling state based on scroll position
-      setScrolling(scrollTop > 0);
+      setScrolling(scrollTop > 10);
     };
 
     // Add scroll event listener

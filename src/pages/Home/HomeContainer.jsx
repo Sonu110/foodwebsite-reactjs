@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Menusrollbar from "../../components/Menusrollbar";
 import MenuContainer from "../../components/MenuContainer";
 import Home from '../../img/bugger.jpg'
+import Catelock from "../../components/Catelock";
 const HomeContainer = () => {
   return (
 <>
@@ -44,7 +45,7 @@ const HomeContainer = () => {
 
 <Menusrollbar></Menusrollbar>
 <MenuContainer></MenuContainer>
-
+<Catelock></Catelock>
     </>
 
   );
