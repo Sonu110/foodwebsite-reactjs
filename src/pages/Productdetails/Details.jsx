@@ -1,35 +1,48 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import  {Menu }from '../../utils/Products'
 import RowContainer from '../../components/RowContainer';
+import { categories } from '../../utils/data';
+import Loader from '../../components/Loader';
+import { Mycontext } from '../../Context/Context';
 
 function Details() {
 
+ const {cart, setcart} =useContext(Mycontext)
+  
   const { name, id } = useParams();
   const [productdata, setproductdata] = useState(Menu);
-  const [rest , setrest] = useState()
-  console.log(name);
-  // Check if the selected category (name) exists in productdata
- 
-    const data = productdata[name].find((product) => product.id === Number(id));
+  const [categoriedata, setcategories] = useState(categories);
+
 
   
-  
-    if (data) {
-      console.log(data);
-      // Handle the case where the product is found
-    } else {
-      console.log("Product not found");
-      // Handle the case where the product with the specified id is not found in the selected category
+    const data = productdata[name].find((product) => product.id === Number(id));
+    const constdata = productdata[name].filter((id)=> id.id != data.id)
+    
+    if(data)
+    {
+      <Loader></Loader>
     }
-  
+
+
+    function carts() 
+    
+    {
+
+      const isProductInCart = cart.some((item) => item.id === data.id);
+      if (!isProductInCart) {
+
+
+      setcart((prevCart) => [...prevCart, data])
+    }
+  }
 
 
 
 
   return (
     <>
-    <section className="overflow-hidden">
+    <section className="overflow-hidden bg-slate-600">
       <div className="mx-auto max-w-5xl px-5 py-24">
         <div className="mx-auto flex flex-wrap items-center lg:w-4/5">
           <img
@@ -50,6 +63,8 @@ function Details() {
               <button
                 type="button"
                 className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+
+                onClick={carts }
               >
                 Add to Cart
               </button>
@@ -63,12 +78,12 @@ function Details() {
         Our fresh & healthy Products related
       </p>
 
+      {categoriedata
+  .filter(category => category.urlParamName === name) // Filter to include only the selected category
+  .map(selectedCategory => (
+    <RowContainer key={selectedCategory.urlParamName} data={constdata} flag={true} cat={selectedCategory.urlParamName} />
+))}
 
-    <RowContainer data={productdata.icecreams}
-      flag={true}
-      
-
-></RowContainer>
     
     
     </>
