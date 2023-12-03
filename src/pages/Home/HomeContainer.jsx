@@ -8,8 +8,9 @@ import Loader from "../../components/Loader";
 const HomeContainer = () => {
 
 
-<Loader></Loader>
+
  
+<Loader></Loader>
  
  return (
 <>

@@ -7,11 +7,17 @@ const Mycontext =createContext()
 const MyProvider = ({ children }) => {
 
     const [cart , setcart]= useState([])
-    console.log(cart);
+    
+    const remove = (productId) => {
+        // Filter out the item with the specified productId
+        const updatedCart = cart.filter((item) => item.id !== productId);
+        setcart(updatedCart);
+      }
+
 
 
     return(
-        <Mycontext.Provider value={{cart, setcart}}>   {children}</Mycontext.Provider>
+        <Mycontext.Provider value={{cart, setcart,remove }}>   {children}</Mycontext.Provider>
     )
 
 

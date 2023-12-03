@@ -2,7 +2,10 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div style={{position:"fixed",left:0, right:0, bottom:0, top:0, display:"flex",alignItems:"center",justifyContent:"center"}}>
+<>
+<h1>jhjkhkjjkhk</h1>
+    <div style={{position:"fixed",left:0, right:0, bottom:0, top:0, display:"flex",alignItems:"center",justifyContent:"center"}} className=" bg-slate-600">
+   
    <div aria-label="Loading..." role="status" class="flex items-center space-x-2">
     <svg class="h-20 w-20 animate-spin stroke-gray-500" viewBox="0 0 256 256">
         <line x1="128" y1="32" x2="128" y2="64" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></line>
@@ -23,6 +26,7 @@ const Loader = () => {
     <span class="text-4xl font-medium text-gray-500">Loading...</span>
 </div>
 </div>
+</>
   );
 };
 

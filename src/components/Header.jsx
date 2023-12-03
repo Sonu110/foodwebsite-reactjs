@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { FaCartShopping } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import { Mycontext } from "../Context/Context";
+
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const {cart} = useContext(Mycontext)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,20 +74,25 @@ const Header = () => {
               </div>
 
               <div class="w-full space-y-2 border-yellow-200 lg:space-y-0 md:w-max lg:border-l ">
+              
+                
                 <button type="button" title="Start buying" class="w-full py-3 px-6 text-center rounded-full transition active:bg-yellow-200 focus:bg-yellow-100 sm:w-max">
                   <span class="block text-yellow-800 font-semibold text-sm">
                     Sign up
                   </span>
                 </button>
+                
+                <Link to={'/login'}>
                 <button type="button" title="Start buying" class="w-full py-3 px-6 text-center rounded-full transition bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-400 focus:bg-yellow-300 sm:w-max">
                   <span class="block text-yellow-900 font-semibold text-sm">
                     Login
                   </span>
                 </button>
+                </Link>
               </div>
              <div className="flex justify-center items-center "> 
             <FaCartShopping  className=" text-[2.5rem] ml-5 " style={{ color: scrolling ? "black" : "#fff",}}/>
-            <span className="-mt-7 rounded-full transition  bg-black w-6 flex  text-white justify-center items-center">3</span>
+            <span className="-mt-7 rounded-full transition  bg-black w-6 flex  text-white justify-center items-center">{cart.length}</span>
             </div>
             </div>
 
