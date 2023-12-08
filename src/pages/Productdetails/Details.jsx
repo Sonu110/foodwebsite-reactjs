@@ -9,11 +9,11 @@ import { Mycontext } from '../../Context/Context';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { CartTwo } from '../Cart/Cart';
+
 
 function Details() {
   const { cart, setcart } = useContext(Mycontext);
-  const history = useHistory();
+
 
   const { name, id } = useParams();
   const [productdata] = useState(Menu);

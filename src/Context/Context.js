@@ -6,6 +6,12 @@ const Mycontext =createContext()
 
 const MyProvider = ({ children }) => {
 
+    const [name , setname]= useState('')
+    const [pasword, setpassword]= useState('')
+
+    
+
+
     const [cart , setcart]= useState([])
     
     const remove = (productId) => {
@@ -17,7 +23,7 @@ const MyProvider = ({ children }) => {
 
 
     return(
-        <Mycontext.Provider value={{cart, setcart,remove }}>   {children}</Mycontext.Provider>
+        <Mycontext.Provider value={{cart, setcart,remove,name,setname,pasword,setpassword }}>   {children}</Mycontext.Provider>
     )
 
 

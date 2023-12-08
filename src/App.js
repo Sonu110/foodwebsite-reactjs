@@ -6,11 +6,14 @@ import Header from './components/Header';
 import Details from './pages/Productdetails/Details';
 import { CartTwo } from './pages/Cart/Cart';
 import Login from './pages/Login/Login';
+import Protexted from './pages/Protextedrouter/Protexted';
 
 
 
 
 function App() {
+
+  
   return (
     <>
       <Header></Header>
@@ -19,14 +22,19 @@ function App() {
     <Route  path='/' element={<HomeContainer></HomeContainer>}>  </Route>
     
     <Route path='details/:name/:id' element={<Details></Details>}></Route>
-    <Route path='/cart' element={<CartTwo></CartTwo>}></Route>
+
+    <Route element={<Protexted user={false}></Protexted>}>
+
+        <Route path='/cart' element={CartTwo}></Route>
+        </Route>
     
     <Route path='/login' element ={<Login></Login>}></Route>
 
 
+    <Route path='*' element={<><div>error</div></>}></Route>
     </Routes>
     
-    
+
     </>
   );
 }
