@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import RowContainer from "./RowContainer";
-import { heroData } from '../utils/data';
+import { Menu } from '../utils/Products';
 
 
 
@@ -25,6 +25,8 @@ function pluse()
 }
 
 
+const categories = ['icecreams', 'chicken', 'curry', 'rice', 'fish'];
+const firstItems = categories.map((category) => Menu[category][0]);
 
 function minus() 
 {
@@ -35,6 +37,9 @@ function minus()
     }
        setScrollValue((prevValue) => prevValue - 200)
    
+     
+
+
 }
   return (
     <section className="w-full  mt-36 p-10">
@@ -61,12 +66,18 @@ function minus()
             </motion.div>
           </div>
     </div>
+    
+    
+      
+    
     <RowContainer
-data={heroData}
+data={firstItems}
 flag={true}
 scrollValue={scrollValue}
+cat={categories.map((item ,index)=> item)}
 ></RowContainer>
-
+      
+    
   </section>
   )
 }

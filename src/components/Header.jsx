@@ -63,7 +63,7 @@ const Header = () => {
                 <ul class="space-y-6 tracking-wide font-medium text-sm md:flex md:space-y-0">
                   <li>
                       {['Home','Menu','Contact'].map((item)=>
-                    <a href={`#${item}`} class="  md:px-4 transition hover:text-yellow-700 ">
+                    <a href={`${item}`} class="  md:px-4 transition hover:text-yellow-700 ">
                       <span>{item}</span>
                       
                     </a>
@@ -75,12 +75,13 @@ const Header = () => {
 
               <div class="w-full space-y-2 border-yellow-200 lg:space-y-0 md:w-max lg:border-l ">
               
-                
+                <Link to={'/signup'}>
                 <button type="button" title="Start buying" class="w-full py-3 px-6 text-center rounded-full transition active:bg-yellow-200 focus:bg-yellow-100 sm:w-max">
                   <span class="block text-yellow-800 font-semibold text-sm">
                     Sign up
                   </span>
                 </button>
+                </Link>
                 
                 <Link to={'/login'}>
                 <button type="button" title="Start buying" class="w-full py-3 px-6 text-center rounded-full transition bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-400 focus:bg-yellow-300 sm:w-max">
@@ -90,12 +91,13 @@ const Header = () => {
                 </button>
                 </Link>
               </div>
+              <Link to={'/cart'}>
              <div className="flex justify-center items-center "> 
             <FaCartShopping  className=" text-[2.5rem] ml-5 " style={{ color: scrolling ? "black" : "#fff",}}/>
             <span className="-mt-7 rounded-full transition  bg-black w-6 flex  text-white justify-center items-center">{cart.length}</span>
             </div>
+            </Link>
             </div>
-
 
 
           </div>

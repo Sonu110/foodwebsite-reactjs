@@ -1,24 +1,33 @@
 import { useContext, useState } from "react"
 import { Mycontext } from "../../Context/Context";
+import { Navigate } from "react-router-dom";
 
 export default function Login() {
 
 
- const {setname,setpassword}= useContext(Mycontext);
+ const {setname,setpassword,auth}= useContext(Mycontext);
  const [email, setEmail] = useState("");
  const [passwords, setPasswords] = useState("");
 
- 
+ const [redirectToHome, setRedirectToHome] = useState(false);
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  // Set the email and password using the context functions
-  setname(email);
-  setpassword(passwords);
+    // Set the email and password using the context functions
+    setname(email);
+    setpassword(passwords);
 
-};
+    // Check if email is "sonu" and set the state to trigger navigation
+    if (auth) {
+      setRedirectToHome(true);
+    }
+  };
 
+  // If redirectToHome is true, perform the navigation
+  if (redirectToHome) {
+    return <Navigate to="/" />;
+  }
     return (
       <>
       

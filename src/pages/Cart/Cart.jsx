@@ -16,7 +16,7 @@
     return (
 
 <>
-<h1>hyyyyjhuiuiui</h1>
+
       <div className="mx-auto max-w-7xl px-5  ">
         <div className="mx-auto max-w-2xl py-8 lg:max-w-7xl">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mt-16">

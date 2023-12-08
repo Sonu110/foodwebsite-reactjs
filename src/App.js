@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import Protexted from './pages/Protextedrouter/Protexted';
 import { Mycontext } from './Context/Context';
 import { useContext } from 'react';
+import { SignUpThree } from './pages/Login/Signup';
 
 
 
@@ -28,7 +29,7 @@ const {auth}= useContext(Mycontext)
         <Route path='/cart' element={<Protexted user={auth}></Protexted>}>
           <Route path='' element={<CartTwo></CartTwo>}></Route>
         </Route>
-    
+    <Route path='/signup' element={<SignUpThree></SignUpThree>}></Route>
     <Route path='/login' element ={<Login></Login>}></Route>
 
 
