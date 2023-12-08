@@ -3,15 +3,14 @@ import React, { useContext } from 'react';
 import { Mycontext } from '../../Context/Context';
 import { Navigate, Outlet} from 'react-router-dom';
 
-function Protexted({children ,user}) {
-  const { name, password } = useContext(Mycontext);
-
+function Protexted({children,user }) {
+ 
   
   if (user) {
-    return <Navigate to="/login" />;
+    return<> <Outlet></Outlet></> 
   }
-
-  return children ?   <Outlet></Outlet>:children;
+  
+  return <Navigate to="/login" />;
 }
 
 export default Protexted;
