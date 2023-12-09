@@ -10,6 +10,7 @@ import Protexted from './pages/Protextedrouter/Protexted';
 import { Mycontext } from './Context/Context';
 import { useContext } from 'react';
 import { SignUpThree } from './pages/Login/Signup';
+import Searchpage from './pages/Searchbar/Searchpage';
 
 
 
@@ -31,7 +32,7 @@ const {auth}= useContext(Mycontext)
         </Route>
     <Route path='/signup' element={<SignUpThree></SignUpThree>}></Route>
     <Route path='/login' element ={<Login></Login>}></Route>
-
+<Route path='/search' element={<Searchpage></Searchpage>}></Route>
 
     <Route path='*' element={<><div>error</div></>}></Route>
     </Routes>
