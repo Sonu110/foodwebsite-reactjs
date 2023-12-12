@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Mycontext } from "../../Context/Context";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export default function Login() {
 
@@ -8,6 +8,8 @@ export default function Login() {
  const {setname,setpassword,auth}= useContext(Mycontext);
  const [email, setEmail] = useState("");
  const [passwords, setPasswords] = useState("");
+const [error,seterror]= useState(false)
+
 
  const [redirectToHome, setRedirectToHome] = useState(false);
 
@@ -21,6 +23,12 @@ export default function Login() {
     // Check if email is "sonu" and set the state to trigger navigation
     if (auth) {
       setRedirectToHome(true);
+    }
+
+   
+    else
+    {
+      seterror(true)
     }
   };
 
@@ -44,6 +52,7 @@ export default function Login() {
           </div>
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <span className=" text-red-600 font-extrabold"> {error ? "Your not resister cheak again ":""}</span>
           <form className="space-y-6" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
@@ -101,9 +110,11 @@ export default function Login() {
   
             <p className="mt-10 text-center text-sm text-gray-500">
               Don't have account goto{' '}
-              <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              <Link to={'/signup'}  className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"> 
+              
                 /Signup 
-              </a>
+              </Link>
+              
             </p>
           </div>
         </div>

@@ -11,6 +11,8 @@ const MyProvider = ({ children }) => {
   useEffect(() => {
     if (name === "sonu") {
       setauth(true);
+    } else {
+      setauth(false); // Set auth to false when the name is not "sonu"
     }
   }, [name]);
 
